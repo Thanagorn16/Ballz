@@ -8,18 +8,23 @@ public class Ball : MonoBehaviour
     Navigator navigator;
     Vector2 rawInput;
     bool getClick = false;
+    Rigidbody2D rb;
     [SerializeField] float moveSpeed = 3;
+    // [SerializeField] float moveSpeedx = 3;
+    // [SerializeField] float moveSpeedy = 3;
 
     void Awake()
     {
         navigator = FindObjectOfType<Navigator>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
     void Update()
     {
-        // navigator.GetMousePosition();
-        // StickToMosue();
         Shoot();
         GetAngle();
     }
@@ -28,7 +33,14 @@ public class Ball : MonoBehaviour
     {
         if(getClick)
         {
-            transform.Translate(Vector2.up * moveSpeed * Time.deltaTime);
+            rb.velocity = transform.up * moveSpeed; // shoot the ball with velocity from Rigidbody2D.
+            // Debug.Log("speed: " + rb.velocity);
+            // Debug.Log("11111111111111");
+            // Vector2 vel = rb.velocity;
+            // rb.velocity = transform.up * new Vector2(Mathf.Clamp(vel.x, -(moveSpeedx), moveSpeedx), Mathf.Clamp(vel.y, -(moveSpeedy), moveSpeedy));
+            // Debug.Log("222222222");
+            Debug.Log("rb: " + rb.velocity);
+            Debug.Log(this.rb.velocity);
         }
     }
 
@@ -36,10 +48,6 @@ public class Ball : MonoBehaviour
     {
         getClick = value.isPressed;
     }
-    // void OnClick(InputValue value)
-    // {
-    //     rawInput = value.Get<Vector2>();
-    // }
     void GetAngle()
     {
         Vector3 mousePostion = Camera.main.ScreenToWorldPoint(navigator.GetMousePosition()); //get mouse position 

@@ -9,7 +9,7 @@ public class Navigator : MonoBehaviour
     public Vector2 GetMousePosition()
     {
         mousePosition = Mouse.current.position.ReadValue();
-        Debug.Log(mousePosition);
+        // Debug.Log(mousePosition);
         return mousePosition;
     }
 
