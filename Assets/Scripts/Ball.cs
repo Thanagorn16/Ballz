@@ -51,14 +51,25 @@ public class Ball : MonoBehaviour
         getClick = value.isPressed;
     }
 
-    void OnCollisionEnter2D(Collision2D other) // the entire method make the ball bounce properly
+    void OnCollisionEnter2D(Collision2D other) 
+    {
+        if(other.gameObject.tag != "Bottom")
+        {
+            Bounce(other);
+        }
+        else 
+        {
+            rb.velocity =  Vector2.zero;// stop every motion once hit the bottom
+        }
+    }
+
+    void Bounce(Collision2D other) //the entire method make the ball bounce properly
     {
         float speed = lastVelocity.magnitude;
         Vector3 direction = Vector3.Reflect(lastVelocity.normalized, other.contacts[0].normal);
 
         rb.velocity = direction * Mathf.Max(speed, 0f);
     }
-
 
     // void StickToMosue()
     // {
