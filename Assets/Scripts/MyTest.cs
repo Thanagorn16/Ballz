@@ -8,8 +8,14 @@ public class MyTest : MonoBehaviour
     // [SerializeField] float radius = 1;
     // [SerializeField] List<GameObject> objs = new List<GameObject>();
     // [SerializeField] GameObject prefabs;
-    [SerializeField] List<GameObject> objs = new List<GameObject>();
+    // [SerializeField] List<GameObject> objs = new List<GameObject>(); // for random stuff
     // int index = 0;
+    Rigidbody2D rb;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] GameObject[] wayPoints;
+    // [SerializeField] GameObject wayPoint;
+    [SerializeField] GameObject[] objs;
+
     void Start()
     {
         // transform.position = origin + Random.insideUnitSphere * radius;
@@ -31,12 +37,30 @@ public class MyTest : MonoBehaviour
         // }
 
         // work!! --> random instantiate at the specified position (transform.position)
-        int index = Random.Range(0, objs.Count);
-        if(objs.Count > 0)
-        {
-            Debug.Log("3333333333");
-            Instantiate(objs[index], transform.position, Quaternion.identity);
-        }
+        // int index = Random.Range(0, objs.Count);
+        // if(objs.Count > 0)
+        // {
+        //     Debug.Log("3333333333");
+        //     Instantiate(objs[index], transform.position, Quaternion.identity);
+        // }
 
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Update()
+    {
+        TestForMove();
+    }
+
+    void TestForMove()
+    {
+        // rb.velocity = transform.up * moveSpeed;
+        // transform.position = Vector3.MoveTowards(transform.position, wayPoint.transform.position, Time.deltaTime * moveSpeed);
+        int index = 0;
+        foreach(GameObject obj in objs) // with this code, thing would not work properly
+        {
+            transform.position = Vector3.MoveTowards(transform.position, wayPoints[index].transform.position, Time.deltaTime * moveSpeed);
+            index++;
+        }
     }
 }
