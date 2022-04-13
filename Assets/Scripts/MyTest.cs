@@ -15,6 +15,7 @@ public class MyTest : MonoBehaviour
     [SerializeField] GameObject[] wayPoints;
     // [SerializeField] GameObject wayPoint;
     [SerializeField] GameObject[] objs;
+    [SerializeField] float distanceBtwBox = 1f;
 
     void Start()
     {
@@ -47,7 +48,11 @@ public class MyTest : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    // void Update()
+    // {
+    //     TestForMove();
+    // }
+    void OnEnable()
     {
         TestForMove();
     }
@@ -57,10 +62,18 @@ public class MyTest : MonoBehaviour
         // rb.velocity = transform.up * moveSpeed;
         // transform.position = Vector3.MoveTowards(transform.position, wayPoint.transform.position, Time.deltaTime * moveSpeed);
         int index = 0;
-        foreach(GameObject obj in objs) // with this code, thing would not work properly
-        {
-            transform.position = Vector3.MoveTowards(transform.position, wayPoints[index].transform.position, Time.deltaTime * moveSpeed);
-            index++;
-        }
+        // [SerializeField] float distanceBtwBox = 1f;
+        // foreach(GameObject obj in objs) // with this code, thing would not work properly
+        // {
+        //     // transform.position = Vector3.MoveTowards(transform.position, wayPoints[index].transform.position, Time.deltaTime * moveSpeed);
+        //     // index++;
+        //     transform.position += Vector3.down * distanceBtwBox * Time.deltaTime;
+        //     Debug.Log("aaaaaaaa");
+        // }
+
+       transform.position += Vector3.down * distanceBtwBox;
+       Debug.Log("time: " + Time.deltaTime);
+    //    Debug.Log("result: " + Vector3.down * distanceBtwBox * Time.deltaTime);
+        
     }
 }
