@@ -1,25 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class Box : MonoBehaviour
 {
-    [SerializeField] List<GameObject> boxes = new List<GameObject>();
-    [SerializeField] GameObject prefab;
-    bool newWave = false;
+    Round round;
 
-    void Update()
+    void Awake()
     {
-
+        round = FindObjectOfType<Round>();
     }
-    void SpawnBoxes()
+
+    int GetCounter()
     {
-        if(newWave)
-        {
-            foreach(GameObject box in boxes)
-            {
-                Instantiate(prefab, box.transform.position, Quaternion.identity);
-            }
-        }
+        return round.Counter();
     }
 }
