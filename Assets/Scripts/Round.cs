@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-    int count = 0;
+    int round = 0;
     GameObject box;
     [SerializeField] GameObject prefab;
     [SerializeField] List<GameObject> prefabs = new List<GameObject>();
@@ -20,14 +20,18 @@ public class Round : MonoBehaviour
         if(other.gameObject.tag == "Ball") //collision for everytime the ball hit the bottom
         {
             Counter();
-            Debug.Log("count: " + count);
+            Debug.Log("count: " + round);
             SpawnBoxes();
         }   
     }
 
+    public int GetCurrentRound()
+    {
+        return round;
+    }
     public int Counter()
     {
-        return count++;
+        return round++;
     }
 
     void SpawnBoxes()

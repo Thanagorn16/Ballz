@@ -5,14 +5,16 @@ using TMPro;
 public class Box : MonoBehaviour
 {
     Round round;
+    TMP_Text roundText;
 
     void Awake()
     {
         round = FindObjectOfType<Round>();
+        roundText = GetComponent<TMP_Text>();
     }
 
-    int GetCounter()
+    void Start()
     {
-        return round.Counter();
+        roundText.text = round.GetCurrentRound().ToString(); // get each round number
     }
 }
