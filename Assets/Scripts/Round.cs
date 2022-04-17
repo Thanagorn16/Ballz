@@ -6,9 +6,16 @@ public class Round : MonoBehaviour
 {
     int round = 1;
     GameObject box;
+    // LoadGame loadGame;
     [SerializeField] GameObject prefab;
     [SerializeField] List<GameObject> prefabs = new List<GameObject>();
     [SerializeField] float distanceBtwBox = 0.5f;
+    
+    // void Awake()
+    // {
+    //     loadGame = FindObjectOfType<LoadGame>();
+    // }
+
     void Start()
     {
         box = GameObject.Find("Boxes");
