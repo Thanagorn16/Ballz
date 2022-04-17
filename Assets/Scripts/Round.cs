@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Round : MonoBehaviour
 {
-    int round = 0;
+    int round = 1;
     GameObject box;
     [SerializeField] GameObject prefab;
     [SerializeField] List<GameObject> prefabs = new List<GameObject>();
