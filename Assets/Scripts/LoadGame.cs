@@ -11,7 +11,6 @@ public class LoadGame : MonoBehaviour
         {
             LoadGamePlay();       
         }
-
     }
 
     public void LoadGamePlay()

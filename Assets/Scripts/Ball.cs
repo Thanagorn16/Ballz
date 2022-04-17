@@ -6,16 +6,21 @@ using UnityEngine.InputSystem;
 public class Ball : MonoBehaviour
 {
     Navigator navigator;
+    CloneManagement cloneManager;
     Vector2 rawInput;
     bool getClick = false;
     Rigidbody2D rb;
     Vector3 lastVelocity;
     [SerializeField] float moveSpeed = 3;
+    // [SerializeField] int clone = 0;
+    // [SerializeField] bool isClone;
+    [SerializeField] GameObject ballPrefab;
 
 
     void Awake()
     {
         navigator = FindObjectOfType<Navigator>();
+        cloneManager = FindObjectOfType<CloneManagement>();
     }
 
     void Start()
@@ -44,8 +49,15 @@ public class Ball : MonoBehaviour
             rb.velocity = transform.up * moveSpeed; // shoot the ball with velocity from Rigidbody2D.
         }
 
+        // for(int i = 0; i < cloneManager.GetClone(); i++)
+        // {
+        //     GameObject instaObj = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        // }
+
         lastVelocity = rb.velocity; // get the last veloxity from before bouncing to then give it to the ball after bounce
+
     }
+
     void OnClick(InputValue value)
     {
         getClick = value.isPressed;

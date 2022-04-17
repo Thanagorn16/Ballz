@@ -27,7 +27,7 @@ public class Round : MonoBehaviour
         if(other.gameObject.tag == "Ball") //collision for everytime the ball hit the bottom
         {
             Counter();
-            Debug.Log("count: " + round);
+            // Debug.Log("count: " + round);
             SpawnBoxes();
         }   
     }

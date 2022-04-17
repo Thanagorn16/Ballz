@@ -28,7 +28,5 @@ public class Box : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        // Debug.Log("num: " + num);
-
     }
 }
