@@ -11,11 +11,11 @@ public class Ball : MonoBehaviour
     bool getClick = false;
     Rigidbody2D rb;
     Vector3 lastVelocity;
+    CreateClone createClone;
     [SerializeField] float moveSpeed = 3;
     // [SerializeField] int clone = 0;
     // [SerializeField] bool isClone;
-    [SerializeField] GameObject ballPrefab;
-
+    // [SerializeField] GameObject ballPrefab;
 
     void Awake()
     {
@@ -26,6 +26,7 @@ public class Ball : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        createClone = GetComponent<CreateClone>();
     }
 
     void Update()
@@ -51,7 +52,8 @@ public class Ball : MonoBehaviour
 
         // for(int i = 0; i < cloneManager.GetClone(); i++)
         // {
-        //     GameObject instaObj = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        //     // Debug.Log("clone" + i);
+        //     // GameObject instaObj = Instantiate(ballPrefab, transform.position, Quaternion.identity);
         // }
 
         lastVelocity = rb.velocity; // get the last veloxity from before bouncing to then give it to the ball after bounce
@@ -72,8 +74,25 @@ public class Ball : MonoBehaviour
         else 
         {
             rb.velocity =  Vector2.zero;// stop every motion once hit the bottom
+            createClone.CreateNewClone(); //create new clone following the amount in CloneManagement once the ball hit the bottom.
         }
+
     }
+
+    // void CreateClone()
+    // {   
+    //     if(cloneManager.GetClone() != 0)
+    //     {
+    //         for(int i = 0; i < cloneManager.GetClone(); i++)
+    //         {
+    //             GameObject instaObj = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+    //         }
+    //     }
+        // for(int i = 0; i < cloneManager.GetClone(); i++)
+        // {
+        //     GameObject instaObj = Instantiate(ballPrefab, transform.position, Quaternion.identity);
+        // }
+    // }
 
     void Bounce(Collision2D other) //the entire method make the ball bounce properly
     {

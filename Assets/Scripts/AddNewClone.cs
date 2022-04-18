@@ -11,10 +11,10 @@ public class AddNewClone : MonoBehaviour
         cloneManager = FindObjectOfType<CloneManagement>();
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other) 
     {
-        cloneManager.AddClone();   
+        // add clone to clone manager, then destroy the game object(clone) which is instantiate from Round
+        cloneManager.AddClone();
         Destroy(gameObject);
-        // Debug.Log("check: " + cloneManager.GetClone());
     }
 }
