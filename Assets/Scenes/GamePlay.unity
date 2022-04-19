@@ -1434,24 +1434,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!1 &2120229332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6875463359200049058, guid: b01ced364dea78d4c8d9d0b05f0dda36, type: 3}
-  m_PrefabInstance: {fileID: 6875463358312579647}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2120229338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120229332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3aa99526bff4514abdcaae44a24c750, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clonePrefab: {fileID: 6734549730495394962, guid: 4eee47020b43111409aef2169c49ecc8, type: 3}
 --- !u!1001 &6875463358312579647
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1459,6 +1441,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6875463359200049055, guid: b01ced364dea78d4c8d9d0b05f0dda36, type: 3}
+      propertyPath: moveSpeed
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6875463359200049055, guid: b01ced364dea78d4c8d9d0b05f0dda36, type: 3}
       propertyPath: ballPrefab
       value: 
